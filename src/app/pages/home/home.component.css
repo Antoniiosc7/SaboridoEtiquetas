@@ -1,13 +1,26 @@
 .hero-section {
-  /*background-image: url('assets/hero.jpg');
-   */
+  background-image: url('https://images.rimontgowineries.com/img/slider/dos/3/26de37ee39f55af6af0068ba57e48a35.jpg');
   height: 300px;
-  text-align: center;
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo grisáceo */
+  width: 100%;
+  height: 100%;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.logo-center {
+  max-width: 100px;
+  margin-bottom: 15px;
 }
 
 .info-section, .cards-section {
