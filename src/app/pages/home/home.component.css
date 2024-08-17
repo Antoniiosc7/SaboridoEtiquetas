@@ -1,0 +1,45 @@
+.hero-section {
+  /*background-image: url('assets/hero.jpg');
+   */
+  height: 300px;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.info-section, .cards-section {
+  padding: 20px;
+}
+
+.bodega-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.bodega-card {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 200px;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.bodega-card:hover {
+  transform: scale(1.05);
+}
+
+.bodega-card img {
+  width: 100%;
+  height: auto;
+}
+
+.bodega-card h3 {
+  text-align: center;
+  padding: 10px 0;
+}

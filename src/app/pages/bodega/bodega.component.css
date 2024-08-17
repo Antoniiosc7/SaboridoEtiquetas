@@ -1,0 +1,25 @@
+.bodega-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.etiquetas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.etiqueta-card {
+  margin: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  width: 150px;
+}
+
+.etiqueta-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}

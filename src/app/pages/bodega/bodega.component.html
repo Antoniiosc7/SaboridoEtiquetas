@@ -1,0 +1,11 @@
+<div class="bodega-header">
+  <h2>{{ bodega.nombre }}</h2>
+  <p>{{ bodega.descripcion }}</p>
+</div>
+
+<div class="etiquetas-grid">
+  <div *ngFor="let etiqueta of etiquetas" class="etiqueta-card">
+    <img [src]="etiqueta.imgUrl" alt="{{ etiqueta.nombre }}">
+    <p>{{ etiqueta.nombre }}</p>
+  </div>
+</div>
