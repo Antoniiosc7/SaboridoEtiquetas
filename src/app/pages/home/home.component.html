@@ -14,7 +14,7 @@
 <div class="cards-section">
   <h2>Bodegas</h2>
   <div class="bodega-cards">
-    <div *ngFor="let bodega of bodegas" class="bodega-card" (click)="goToBodega(bodega.id)">
+    <div *ngFor="let bodega of bodegas" class="bodega-card" (click)="goToBodega(bodega.codBodega)">
       <img [src]="bodega.imgUrl" alt="{{ bodega.nombre }}">
       <h3>{{ bodega.nombre }}</h3>
     </div>

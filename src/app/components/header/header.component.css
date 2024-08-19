@@ -38,3 +38,8 @@
 .nav-menu a.active {
   color: #f0a500;
 }
+/* src/app/components/header/header.component.css */
+.logo {
+  cursor: pointer;
+}
+

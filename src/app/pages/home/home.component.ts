@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {NgForOf} from "@angular/common";
+import {ApiService} from "../../api.service";
+import {Bodega} from "../../models/bodega";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-home',
@@ -11,20 +14,24 @@ import {NgForOf} from "@angular/common";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-  bodegas = [
-    { id: 1, nombre: 'Bodega A', imgUrl: 'assets/bodegaA.jpg' },
-    { id: 2, nombre: 'Bodega B', imgUrl: 'assets/bodegaB.jpg' },
-    // Datos ejemplo, se deberían cargar desde un servicio
-  ];
+export class HomeComponent implements OnInit {
+  bodegas: Bodega[] = [];
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private apiService: ApiService,
+    private titleService: Title
+  ) { }
 
   ngOnInit(): void {
-    // Aquí cargaríamos las bodegas de un endpoint
+    this.apiService.getBodegas().subscribe(data => {
+      this.bodegas = data;
+      this.titleService.setTitle(`Saborido Etiquetas - Vinos de Jerez`);
+
+    });
   }
 
-  goToBodega(id: number) {
+  goToBodega(id: string) {
     this.router.navigate(['/bodega', id]);
   }
 }

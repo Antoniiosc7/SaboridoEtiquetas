@@ -1,25 +1,42 @@
-.bodega-header {
+/* src/app/pages/bodega/bodega.component.css */
+.bodega-container {
   text-align: center;
-  margin-bottom: 20px;
+  margin: 20px;
+  position: relative;
 }
 
-.etiquetas-grid {
+.visitas-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  margin-top: -15px;
 }
 
-.etiqueta-card {
-  margin: 10px;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 8px;
-  text-align: center;
-  width: 150px;
+.visitas-container .material-icons {
+  margin-right: 5px;
 }
 
-.etiqueta-card img {
-  width: 100%;
+.etiquetas-container {
+  margin: 20px;
+}
+
+.etiqueta-img {
+  width: 100px;
   height: auto;
-  border-radius: 4px;
+}
+
+.bodega-img {
+  max-width: 40%;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 15px;
+}
+@media (min-width: 1200px) {
+  .bodegas-all {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 }
