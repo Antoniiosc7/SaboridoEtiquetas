@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {NgForOf} from "@angular/common";
-import {ApiService} from "../../api.service";
+import {ApiService} from "../../services/api.service";
 import {Bodega} from "../../models/bodega";
 import {Title} from "@angular/platform-browser";
 

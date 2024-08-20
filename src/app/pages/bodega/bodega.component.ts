@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgForOf, NgIf } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ApiService } from '../../api.service';
+import { ApiService } from '../../services/api.service';
 import { Bodega } from '../../models/bodega';
 import {MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardTitle} from "@angular/material/card";
 import {Title} from "@angular/platform-browser";

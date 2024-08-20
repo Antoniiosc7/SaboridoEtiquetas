@@ -1,22 +1,27 @@
-<div class="hero-section">
-  <div class="overlay">
-    <img src="assets/logo.png" alt="Saborido Etiquetas" class="logo-center">
-    <h1>Saborido Etiquetas</h1>
-    <p>Una colección de etiquetas de vinos de Jerez</p>
+  <div class="hero-section">
+    <div class="overlay">
+      <img src="assets/logo.png" alt="Saborido Etiquetas" class="logo-center">
+      <h1>Saborido Etiquetas</h1>
+      <p>Una colección de etiquetas de vinos de Jerez</p>
+    </div>
   </div>
-</div>
+  <div class="page-container">
 
-<div class="info-section">
-  <h2>Vino de Jerez</h2>
-  <p>El vino de Jerez es conocido por su calidad y tradición. Es una de las Denominaciones de Origen más antiguas de España.</p>
-</div>
+  <div class="info-section">
+    <h2>Vino de Jerez</h2>
+    <p>El vino de Jerez es conocido por su calidad y tradición. Es una de las Denominaciones de Origen más antiguas de España.</p>
+  </div>
 
-<div class="cards-section">
-  <h2>Bodegas</h2>
-  <div class="bodega-cards">
-    <div *ngFor="let bodega of bodegas" class="bodega-card" (click)="goToBodega(bodega.codBodega)">
-      <img [src]="bodega.imgUrl" alt="{{ bodega.nombre }}">
-      <h3>{{ bodega.nombre }}</h3>
+  <div class="cards-section">
+    <h2>Bodegas</h2>
+    <div class="bodega-cards">
+      <div *ngFor="let bodega of bodegas" class="bodega-card" (click)="goToBodega(bodega.codBodega)">
+        <img [src]="bodega.imgUrl" alt="{{ bodega.nombre }}">
+        <div class="bodega-info">
+          <h3>{{ bodega.nombre }}</h3>
+          <span class="bodega-visitas">{{ bodega.visitas }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>

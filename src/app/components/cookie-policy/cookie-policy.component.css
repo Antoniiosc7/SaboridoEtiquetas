@@ -1,0 +1,58 @@
+.cookie-policy {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%; /* Asegura que ocupe toda la anchura */
+  background-color: #616161; /* Fondo claro para la sección */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 0 0 10px 10px; /* Bordes redondeados solo en las esquinas superiores */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra suave */
+  font-family: Arial, sans-serif; /* Fuente */
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.cookie-policy p {
+  color: #ffffff; /* Color de texto */
+}
+
+.cookie-policy .accept-button {
+  background-color: #28a745; /* Verde para aceptar */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.cookie-policy .accept-button:hover {
+  background-color: #218838; /* Verde oscuro al pasar el mouse */
+}
+
+.cookie-policy .reject-button {
+  background-color: #dc3545; /* Rojo para rechazar */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.cookie-policy .reject-button:hover {
+  background-color: #c82333; /* Rojo oscuro al pasar el mouse */
+}
+
+.cookie-policy a {
+  display: inline-block; /* Para aplicar margen */
+  margin-top: -30px; /* Espaciado arriba */
+  margin-bottom: 10px;
+  color: #ff5722; /* Nuevo color del enlace */
+  text-decoration: none; /* Sin subrayado */
+}
+
+.cookie-policy a:hover {
+  text-decoration: underline; /* Subrayado al pasar el mouse */
+}

@@ -37,9 +37,11 @@
   background-color: #f8f8f8;
   border-radius: 8px;
   overflow: hidden;
-  width: 200px;
+  height: 350px;
+  width: calc(33.33% - 20px); /* Ensure 3 cards per row with spacing */
   margin: 10px;
   cursor: pointer;
+  border-color: #f8f8f8;
   transition: transform 0.2s;
 }
 
@@ -49,10 +51,45 @@
 
 .bodega-card img {
   width: 100%;
-  height: auto;
+  height: auto; /* Maintain aspect ratio */
+  max-height: 250px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto; /* Center the image */
+  object-fit: contain; /* Ensure the image fits within the card without being cut off */
 }
 
-.bodega-card h3 {
+.bodega-info {
+  position: relative;
   text-align: center;
   padding: 10px 0;
+}
+
+.bodega-visitas {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 0.8em;
+}
+/* Styles for large screens */
+@media (min-width: 1024px) {
+  .page-container {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .bodega-card {
+    width: calc(33.33% - 20px); /* Ensure 3 cards per row with spacing */
+  }
+}
+
+/* Styles for small screens */
+@media (max-width: 1023px) {
+  .bodega-card {
+    width: 100%; /* Ensure one card per row */
+  }
 }
