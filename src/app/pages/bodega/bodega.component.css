@@ -24,8 +24,10 @@
 }
 
 .etiqueta-img {
-  width: 100px;
-  height: auto;
+  width: 70%;
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto; /* Center the image */
 }
 
 .bodega-img {

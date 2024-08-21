@@ -1,13 +1,13 @@
-// src/app/pages/bodega/bodega.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForOf, NgIf } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ApiService } from '../../services/api.service';
 import { Bodega } from '../../models/bodega';
-import {MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardTitle} from "@angular/material/card";
-import {Title} from "@angular/platform-browser";
+import { MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardTitle } from "@angular/material/card";
+import { Title } from "@angular/platform-browser";
+import {API_URL} from "../../../config";
 
 @Component({
   selector: 'app-bodega',
@@ -31,6 +31,9 @@ export class BodegaComponent implements OnInit {
   etiquetas: any[] = [];
   codBodega: string | null = null;
   displayedColumns: string[] = ['imgUrl'];
+  totalImages: number = 0;
+  pageSize: number = 10;
+  currentPage: number = 1;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,15 +47,23 @@ export class BodegaComponent implements OnInit {
       this.apiService.getBodegasByCod(this.codBodega).subscribe(data => {
         this.bodega = data;
         this.titleService.setTitle(`${data.nombre} - Saborido Etiquetas`);
-
       });
       this.apiService.actualizaContador(this.codBodega).subscribe();
+      this.fetchImages(this.currentPage);
     }
+  }
 
-    this.etiquetas = [
-      { nombre: 'Etiqueta 1', imgUrl: 'assets/etiqueta1.jpg' },
-      { nombre: 'Etiqueta 2', imgUrl: 'assets/etiqueta2.jpg' },
-      // Add more etiquetas as needed
-    ];
+  fetchImages(page: number): void {
+    if (this.codBodega) {
+      this.apiService.getImagesByCodBodegaAndPage(this.codBodega, page).subscribe(data => {
+        this.etiquetas = data.images.map(img => ({ imgUrl: `${API_URL}/api/bodegas/${this.codBodega}/images/${img}` }));
+        this.totalImages = data.totalImages;
+      });
+    }
+  }
+
+  onPageChange(event: PageEvent): void {
+    this.currentPage = event.pageIndex + 1;
+    this.fetchImages(this.currentPage);
   }
 }
