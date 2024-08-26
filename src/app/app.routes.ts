@@ -1,3 +1,4 @@
+// app.routes.ts
 import { Routes } from '@angular/router';
 import {HomeComponent} from "./pages/home/home.component";
 import {BodegaComponent} from "./pages/bodega/bodega.component";
@@ -14,6 +15,5 @@ export const routes: Routes = [
     component: BodegaComponent
   },
   { path: 'contacto', component: ContactoComponent },
-  { path: 'privacidad', component: PrivacidadComponent },
+  { path: 'privacidad', component: PrivacidadComponent }
 ];
-

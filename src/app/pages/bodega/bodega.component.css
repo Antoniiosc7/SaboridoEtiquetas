@@ -29,7 +29,11 @@
   display: block;
   margin: 0 auto; /* Center the image */
 }
-
+@media (min-width: 1200px) {
+  .etiqueta-img {
+    width: 50%;
+  }
+}
 .bodega-img {
   max-width: 40%;
   margin: 0 auto;

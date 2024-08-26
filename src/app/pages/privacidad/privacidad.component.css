@@ -1,0 +1,13 @@
+/* src/app/pages/privacidad/privacidad.component.css */
+.privacy-policy {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.privacy-policy h1 {
+  font-size: 1.5em;
+}
+
+.privacy-policy h2 {
+  font-size: 1.2em;
+}

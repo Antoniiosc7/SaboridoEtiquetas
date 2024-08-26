@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForOf, NgIf } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import {MatPaginatorIntl, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { ApiService } from '../../services/api.service';
 import { Bodega } from '../../models/bodega';
 import { MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardTitle } from "@angular/material/card";
 import { Title } from "@angular/platform-browser";
 import {API_URL} from "../../../config";
+import {CustomPaginatorIntl} from "../../services/custom-paginator-intl.service";
 
 @Component({
   selector: 'app-bodega',
@@ -22,6 +23,9 @@ import {API_URL} from "../../../config";
     MatCardContent,
     MatCardImage,
     MatCardTitle
+  ],
+  providers: [
+    { provide: MatPaginatorIntl, useClass: CustomPaginatorIntl }
   ],
   templateUrl: './bodega.component.html',
   styleUrls: ['./bodega.component.css']
