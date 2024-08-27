@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForOf, NgIf } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorIntl, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
@@ -44,12 +44,16 @@ export class BodegaComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private apiService: ApiService,
     private titleService: Title
   ) { }
 
   ngOnInit(): void {
     this.codBodega = this.route.snapshot.paramMap.get('id');
+    const pageParam = this.route.snapshot.queryParamMap.get('pagina');
+    this.currentPage = pageParam ? +pageParam : 1;
+
     if (this.codBodega) {
       this.apiService.getBodegasByCod(this.codBodega).subscribe(data => {
         this.bodega = data;
@@ -79,6 +83,11 @@ export class BodegaComponent implements OnInit {
 
   onPageChange(event: PageEvent): void {
     this.currentPage = event.pageIndex + 1;
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { pagina: this.currentPage },
+      queryParamsHandling: 'merge'
+    });
     this.fetchImages(this.currentPage);
   }
 

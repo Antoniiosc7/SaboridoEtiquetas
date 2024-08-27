@@ -1,5 +1,5 @@
 <div class="bodegas-all">
-  <div *ngIf="bodega" class="bodega-container">
+  <div *ngIf="bodega && currentPage === 1" class="bodega-container">
     <h1>{{ bodega.nombre }}</h1>
     <div class="visitas-container">
       <span class="material-icons">visibility</span>
