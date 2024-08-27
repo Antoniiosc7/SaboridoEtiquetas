@@ -1,5 +1,9 @@
+<div class="volver-container">
+  <button class="volver-button" (click)="navigateHome()">Volver</button>
+</div>
 <div class="bodegas-all">
   <div *ngIf="bodega && currentPage === 1" class="bodega-container">
+
     <h1>{{ bodega.nombre }}</h1>
     <div class="visitas-container">
       <span class="material-icons">visibility</span>
@@ -27,8 +31,16 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="etiqueta-row"></tr>
     </table>
-    <mat-paginator [length]="totalImages" [pageSize]="pageSize" (page)="onPageChange($event)">
-    </mat-paginator>
+    <div class="paginator-container">
+      <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage <= 1">Anterior</button>
+      <span>Página {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage >= totalPages">Siguiente</button>
+      <mat-form-field>
+        <mat-select [(value)]="currentPage" (selectionChange)="goToPage($event.value)">
+          <mat-option *ngFor="let page of pageOptions" [value]="page">{{ page }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
 
   <div *ngIf="selectedImage" class="image-modal" (click)="closeImage()">

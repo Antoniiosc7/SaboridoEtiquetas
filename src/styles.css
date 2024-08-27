@@ -2,3 +2,55 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Global styles for paginator buttons */
+.paginator-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  margin-right: 8px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  height: 48px; /* Set a fixed height to match the dropdown */
+  line-height: 1.5; /* Adjust line height for better alignment */
+}
+
+.paginator-container button:hover {
+  background-color: #0056b3;
+
+  transform: scale(1.05);
+}
+
+.paginator-container button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.paginator-container mat-form-field {
+  width: auto;
+  margin: 5px 0 0 20px;
+  height: 70px; /* Reduce the height */
+}
+
+.paginator-container .mat-select {
+  padding: 5px 10px; /* Reduce padding */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9em; /* Adjust font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  height: 38px; /* Reduce height */
+  line-height: 1.2; /* Adjust line height */
+}
+
+.paginator-container .mat-select:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}

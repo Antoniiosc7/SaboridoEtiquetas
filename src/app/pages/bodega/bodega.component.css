@@ -112,34 +112,30 @@ td.mat-cell {
   transform: scale(1.05);
 }
 
-.bodegas-all .etiquetas-container .mat-paginator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  background-color: #f9f9f9;
-  border-top: 1px solid #ddd;
-}
-
-.mat-paginator {
-  background-color: #f9f9f9 !important;
-  border-top: 1px solid #ddd !important;
-}
-
-.mat-paginator .mat-icon-button {
-  color: #007bff !important;
-  border: none !important;
-  background: none !important;
-}
-
-/* Ensure both columns have equal width */
 .mat-column-imgUrl1, .mat-column-imgUrl2 {
   width: 50%; /* Set equal width for both columns */
-  padding: 0 2px; /* Adjust padding to reduce space between columns */
+  padding: 5px 20px; /* Adjust padding to reduce space between columns */
+}
+.volver-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  margin-top: 20px;
 }
 
-.mat-paginator .mat-paginator-range-label {
-  color: #333 !important;
-  font-size: 1em !important;
-  margin: 0 12px !important;
+.volver-button {
+  padding: 10px 20px;
+  background-color: white;
+  color: #007bff;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.volver-button:hover {
+  background-color: #007bff;
+  color: white;
 }

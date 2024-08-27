@@ -9,6 +9,7 @@ import { MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardTitle } fr
 import { Title } from "@angular/platform-browser";
 import { API_URL } from "../../../config";
 import { CustomPaginatorIntl } from "../../services/custom-paginator-intl.service";
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-bodega',
@@ -22,7 +23,8 @@ import { CustomPaginatorIntl } from "../../services/custom-paginator-intl.servic
     MatCardHeader,
     MatCardContent,
     MatCardImage,
-    MatCardTitle
+    MatCardTitle,
+    MatSelectModule
   ],
   providers: [
     { provide: MatPaginatorIntl, useClass: CustomPaginatorIntl }
@@ -39,6 +41,8 @@ export class BodegaComponent implements OnInit {
   pageSize: number = 20;
   currentPage: number = 1;
   selectedImage: string | null = null;
+  totalPages: number = 0;
+  pageOptions: number[] = [];
 
   @ViewChild('etiquetasTable', { static: false }) etiquetasTable: ElementRef<HTMLDivElement> | undefined;
 
@@ -76,6 +80,8 @@ export class BodegaComponent implements OnInit {
           });
         }
         this.totalImages = data.totalImages;
+        this.totalPages = Math.ceil(this.totalImages / this.pageSize);
+        this.pageOptions = Array.from({ length: this.totalPages }, (_, i) => i + 1);
         this.scrollToTop();
       });
     }
@@ -83,6 +89,16 @@ export class BodegaComponent implements OnInit {
 
   onPageChange(event: PageEvent): void {
     this.currentPage = event.pageIndex + 1;
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { pagina: this.currentPage },
+      queryParamsHandling: 'merge'
+    });
+    this.fetchImages(this.currentPage);
+  }
+
+  goToPage(page: number): void {
+    this.currentPage = page;
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { pagina: this.currentPage },
@@ -103,5 +119,9 @@ export class BodegaComponent implements OnInit {
 
   closeImage() {
     this.selectedImage = null;
+  }
+
+  navigateHome() {
+    this.router.navigate(['/']);
   }
 }
