@@ -10,17 +10,28 @@
     <p *ngIf="bodega.texto">{{ bodega.texto }}</p>
   </div>
 
-  <div class="etiquetas-container">
-    <table mat-table [dataSource]="etiquetas" class="mat-elevation-z8">
-      <ng-container matColumnDef="imgUrl">
+  <div #etiquetasTable class="etiquetas-container">
+    <table mat-table [dataSource]="etiquetas" class="mat-elevation-z8 etiquetas-table">
+      <ng-container matColumnDef="imgUrl1">
         <th mat-header-cell *matHeaderCellDef> Etiquetas </th>
         <td mat-cell *matCellDef="let etiqueta">
-          <img [src]="etiqueta.imgUrl" alt="{{ etiqueta.nombre }}" class="etiqueta-img">
+          <img *ngIf="etiqueta.imgUrl1" [src]="etiqueta.imgUrl1" alt="Etiqueta 1" class="etiqueta-img" (click)="enlargeImage(etiqueta.imgUrl1)">
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="imgUrl2">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let etiqueta">
+          <img *ngIf="etiqueta.imgUrl2" [src]="etiqueta.imgUrl2" alt="Etiqueta 2" class="etiqueta-img" (click)="enlargeImage(etiqueta.imgUrl2)">
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="etiqueta-row"></tr>
     </table>
-    <mat-paginator [length]="totalImages" [pageSize]="pageSize" (page)="onPageChange($event)"></mat-paginator>
+    <mat-paginator [length]="totalImages" [pageSize]="pageSize" (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+
+  <div *ngIf="selectedImage" class="image-modal" (click)="closeImage()">
+    <img [src]="selectedImage" class="large-image">
   </div>
 </div>

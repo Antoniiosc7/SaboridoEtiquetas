@@ -1,4 +1,3 @@
-/* src/app/pages/bodega/bodega.component.css */
 .bodega-container {
   text-align: center;
   margin: 20px;
@@ -21,28 +20,126 @@
 
 .etiquetas-container {
   margin: 20px;
+  text-align: center; /* Center align content in the container */
 }
 
+/* Estilos para la tabla */
+.etiquetas-table {
+  margin: 0 auto 20px auto;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+
+
+  border: none;
+}
+
+table, th, td {
+  border: none;
+}
+th.mat-header-cell, td.mat-cell {
+  border: none; /* Remove borders from cells */
+}
+
+th.mat-header-cell {
+  font-size: 1.5em;
+  padding-bottom: 10px;
+}
+
+td.mat-cell {
+  padding: 10px 0; /* Add vertical padding */
+  text-align: center; /* Center content in cells */
+}
+
+/* Imagenes en las celdas */
 .etiqueta-img {
-  width: 70%;
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  height: auto; /* Mantener la relación de aspecto */
   display: block;
-  margin: 0 auto; /* Center the image */
+  margin: 0 auto; /* Centrar la imagen */
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Animation on hover */
 }
-@media (min-width: 1200px) {
-  .etiqueta-img {
-    width: 50%;
-  }
+
+.etiqueta-img:hover {
+  transform: scale(1.05); /* Slightly enlarge image on hover */
 }
+
+
+
 .bodega-img {
   max-width: 40%;
-  margin: 0 auto;
   display: block;
-  margin-bottom: 15px;
+  margin: 0 auto 15px;
 }
-@media (min-width: 1200px) {
+
+@media (min-width: 1200px) and (max-width: 1600px) {
   .bodegas-all {
     margin-left: 10%;
     margin-right: 10%;
   }
+}
+@media (min-width: 1600px) {
+  .bodegas-all {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+
+/* Modal de imagen grande */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.large-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.image-modal:hover .large-image {
+  transform: scale(1.05);
+}
+
+.bodegas-all .etiquetas-container .mat-paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+}
+
+.mat-paginator {
+  background-color: #f9f9f9 !important;
+  border-top: 1px solid #ddd !important;
+}
+
+.mat-paginator .mat-icon-button {
+  color: #007bff !important;
+  border: none !important;
+  background: none !important;
+}
+
+/* Ensure both columns have equal width */
+.mat-column-imgUrl1, .mat-column-imgUrl2 {
+  width: 50%; /* Set equal width for both columns */
+  padding: 0 2px; /* Adjust padding to reduce space between columns */
+}
+
+.mat-paginator .mat-paginator-range-label {
+  color: #333 !important;
+  font-size: 1em !important;
+  margin: 0 12px !important;
 }
