@@ -3,14 +3,13 @@
 </div>
 <div class="bodegas-all">
   <div *ngIf="bodega && currentPage === 1" class="bodega-container">
-
     <h1>{{ bodega.nombre }}</h1>
     <div class="visitas-container">
       <span class="material-icons">visibility</span>
       <span>{{ bodega.visitas }}</span>
     </div>
     <img [src]="bodega.imgUrl" alt="{{ bodega.nombre }}" class="bodega-img">
-    <p>{{ bodega.descripcion }}</p>
+    <p [innerHTML]="getSanitizedDescription(bodega.descripcion)"></p>
     <p *ngIf="bodega.texto">{{ bodega.texto }}</p>
   </div>
 
@@ -33,7 +32,7 @@
     </table>
     <div class="paginator-container">
       <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage <= 1">Anterior</button>
-      <span>Página {{ currentPage }} of {{ totalPages }}</span>
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
       <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage >= totalPages">Siguiente</button>
       <mat-form-field>
         <mat-select [(value)]="currentPage" (selectionChange)="goToPage($event.value)">

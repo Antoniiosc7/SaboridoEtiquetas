@@ -3,6 +3,8 @@
     "/",
     "/contacto",
     "/privacidad",
-    "/bodega/valdespino"
+    "/bodega/valdespino",
+    "/bodega/valderrama",
+    "/bodega/ysasi"
   ]
 }

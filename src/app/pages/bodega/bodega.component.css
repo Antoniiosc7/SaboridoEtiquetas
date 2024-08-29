@@ -139,3 +139,6 @@ td.mat-cell {
   background-color: #007bff;
   color: white;
 }
+.justified-text {
+  text-align: justify;
+}

@@ -6,7 +6,7 @@ import { MatPaginatorIntl, MatPaginatorModule, PageEvent } from '@angular/materi
 import { ApiService } from '../../services/api.service';
 import { Bodega } from '../../models/bodega';
 import { MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardTitle } from "@angular/material/card";
-import { Title } from "@angular/platform-browser";
+import {DomSanitizer, SafeHtml, Title} from "@angular/platform-browser";
 import { API_URL } from "../../../config";
 import { CustomPaginatorIntl } from "../../services/custom-paginator-intl.service";
 import { MatSelectModule } from '@angular/material/select';
@@ -50,7 +50,8 @@ export class BodegaComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private apiService: ApiService,
-    private titleService: Title
+    private titleService: Title,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -123,5 +124,10 @@ export class BodegaComponent implements OnInit {
 
   navigateHome() {
     this.router.navigate(['/']);
+  }
+
+  getSanitizedDescription(description: string): SafeHtml {
+    const formattedDescription = description.replace(/\n/g, '<br>');
+    return this.sanitizer.bypassSecurityTrustHtml(`<div class="justified-text">${formattedDescription}</div>`);
   }
 }
