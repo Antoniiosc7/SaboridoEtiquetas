@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, Inject, PLATFORM_ID} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgForOf, NgIf } from '@angular/common';
+import {isPlatformBrowser, NgForOf, NgIf} from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorIntl, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ApiService } from '../../services/api.service';
 import { Bodega } from '../../models/bodega';
 import { MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardTitle } from "@angular/material/card";
 import { DomSanitizer, SafeHtml, Title } from "@angular/platform-browser";
-import { API_URL } from "../../../config";
+import { API_URL, COMENTARIOS } from "../../../config";
 import { CustomPaginatorIntl } from "../../services/custom-paginator-intl.service";
 import { MatSelectModule } from '@angular/material/select';
 import { ComentariosComponent } from "../../components/comentarios/comentarios.component";
@@ -45,7 +45,7 @@ export class BodegaComponent implements OnInit {
   selectedImage: string | null = null;
   totalPages: number = 0;
   pageOptions: number[] = [];
-
+  comentarios: boolean=false
   @ViewChild('etiquetasTable', { static: false }) etiquetasTable: ElementRef<HTMLDivElement> | undefined;
 
   constructor(
@@ -53,10 +53,12 @@ export class BodegaComponent implements OnInit {
     private router: Router,
     private apiService: ApiService,
     private titleService: Title,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   ngOnInit(): void {
+    this.comentarios = COMENTARIOS === 'true';
     const codBodegaParam = this.route.snapshot.paramMap.get('id');
     this.codBodega = codBodegaParam ? codBodegaParam : '';
     const pageParam = this.route.snapshot.queryParamMap.get('pagina');
@@ -112,10 +114,9 @@ export class BodegaComponent implements OnInit {
   }
 
   scrollToTop(): void {
-    if (this.etiquetasTable && this.etiquetasTable.nativeElement) {
-      this.etiquetasTable.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+    if (isPlatformBrowser(this.platformId)) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }  }
 
   enlargeImage(imgUrl: string) {
     this.selectedImage = imgUrl;

@@ -16,8 +16,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getBodegas(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl + 'bodegas');
+  getBodegas(): Observable<Bodega[]> {
+    return this.http.get<Bodega[]>(this.apiUrl + 'bodegas');
   }
 
   getBodegasByCod(codBodega: string): Observable<Bodega> {

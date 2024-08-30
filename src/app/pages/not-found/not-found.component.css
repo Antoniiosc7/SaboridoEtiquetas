@@ -1,0 +1,58 @@
+/* src/app/pages/not-found/not-found.component.css */
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #f8f9fa;
+  color: #343a40;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.error-code {
+  font-size: 6rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.error-message {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+.error-description {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.error-humor {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.map-image {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border: 2px solid #343a40;
+  border-radius: 0.25rem;
+}
+
+.home-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.home-link:hover {
+  background-color: #0056b3;
+}

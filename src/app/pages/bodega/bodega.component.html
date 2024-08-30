@@ -46,6 +46,6 @@
     <img [src]="selectedImage" class="large-image">
   </div>
 </div>
-<div class="comentarios">
+<div *ngIf="comentarios" class="comentarios">
   <app-comentarios [codBodega]="codBodega!"></app-comentarios>
 </div>
