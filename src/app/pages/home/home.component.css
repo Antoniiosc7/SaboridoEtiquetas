@@ -37,7 +37,7 @@
   background-color: #f8f8f8;
   border-radius: 8px;
   overflow: hidden;
-  height: 350px;
+  height: 400px;
   width: calc(33.33% - 20px); /* Ensure 3 cards per row with spacing */
   margin: 10px;
   cursor: pointer;
@@ -182,7 +182,7 @@
 }
 
 .bodega-info h3 {
-  margin: 0 0 10px;
+  margin: 23px 0 10px;
   font-size: 2em; /* Increase font size */
 }
 

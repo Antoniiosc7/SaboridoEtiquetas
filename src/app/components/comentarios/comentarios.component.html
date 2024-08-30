@@ -1,0 +1,27 @@
+<!-- src/app/components/comentarios/comentarios.component.html -->
+<form (ngSubmit)="submitComment()" class="comment-form">
+  <input type="text" [(ngModel)]="comment.nombre" name="name" placeholder="Nombre" required />
+  <input type="email" [(ngModel)]="comment.email" name="email" placeholder="Email" required />
+  <textarea [(ngModel)]="comment.mensaje" name="message" placeholder="Mensaje" required></textarea>
+  <button type="submit">Enviar Comentario</button>
+</form>
+
+<div *ngFor="let comment of comments" class="comment-container">
+  <div class="comment">
+    <p><strong>{{ comment.nombre }}</strong></p>
+    <p>{{ comment.mensaje }}</p>
+    <button (click)="replyToComment(comment.id)">Responder</button>
+  </div>
+  <form *ngIf="replyingTo === comment.id" (ngSubmit)="submitReply()" class="reply-form">
+    <input type="text" [(ngModel)]="reply.nombre" name="name" placeholder="Nombre" required />
+    <input type="email" [(ngModel)]="reply.email" name="email" placeholder="Email" required />
+    <textarea [(ngModel)]="reply.mensaje" name="message" placeholder="Mensaje" required></textarea>
+    <button type="submit">Enviar Respuesta</button>
+  </form>
+  <div *ngFor="let reply of comment.replies" class="reply-container">
+    <div class="comment">
+      <p><strong>{{ reply.nombre }}</strong></p>
+      <p>{{ reply.mensaje }}</p>
+    </div>
+  </div>
+</div>

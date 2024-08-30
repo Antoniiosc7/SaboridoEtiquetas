@@ -1,7 +1,7 @@
 export const environment = {
-  production: false,
-  BASE_URL: 'localhost',
-  API_PORT: '8080',
-  PROTOCOLO: 'http',
+  production: true,
+  BASE_URL: 'certs.antoniosaborido.es',
+  API_PORT: '8443',
+  PROTOCOLO: 'https',
   COMENTARIOS: 'false'
 };

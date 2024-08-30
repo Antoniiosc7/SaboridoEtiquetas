@@ -1,0 +1,65 @@
+/* src/app/components/comentarios/comentarios.component.css */
+.comment-form, .reply-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.comment-form input, .reply-form input, .comment-form textarea, .reply-form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.comment-form button, .reply-form button {
+  align-self: flex-end;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.comment-form button:hover, .reply-form button:hover {
+  background-color: #0056b3;
+}
+
+.comment-container {
+  margin-bottom: 20px;
+}
+
+.comment {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+}
+
+.comment p {
+  margin: 0 0 10px;
+}
+
+.comment button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+}
+
+.comment button:hover {
+  background-color: #218838;
+}
+
+.reply-container {
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 2px solid #ccc;
+}
