@@ -6,4 +6,5 @@ export interface Bodega {
   texto?: string | null;
   imgUrl: string;
   visitas: number;
+  numEtiquetas: number;
 }

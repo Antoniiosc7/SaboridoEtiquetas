@@ -60,9 +60,23 @@
 }
 
 .bodega-info {
+  padding: 15px;
+  text-align: left;
   position: relative;
-  text-align: center;
-  padding: 10px 0;
+}
+
+.bodega-visitas, .bodega-etiquetas {
+  background-color: #f1f1f1;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1.2em; /* Increase font size */
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.bodega-etiquetas {
+  background-color: #e0e0e0;
+  margin-left: 10px;
 }
 
 .bodega-visitas {
@@ -70,7 +84,6 @@
   top: 0;
   right: 10px;
   background-color: rgba(0, 0, 0, 0.5);
-  color: white;
   padding: 2px 5px;
   border-radius: 3px;
   font-size: 0.8em;
@@ -93,3 +106,119 @@
     width: 100%; /* Ensure one card per row */
   }
 }
+.justified-text {
+  text-align: justify;
+  text-indent: 2em; /* Indent the first line of each paragraph */
+  font-size: 1.2em;
+}
+.info-section{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+/* src/app/pages/home/home.component.css */
+.hero-section {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo-center {
+  width: 150px;
+  height: auto;
+}
+
+.page-container {
+  padding: 20px;
+}
+
+.info-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cards-section {
+  text-align: center;
+}
+
+.bodega-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  border-color: #333333;
+}
+
+.bodega-card {
+  background-color: #fff;
+  border: 4px solid rgba(0, 0, 0, 0.2)!important; /* Thick black border */
+  border-radius: 10px;
+  overflow: hidden;
+  width: calc(33.333% - 20px); /* 3 cards per row with gap */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bodega-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bodega-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.bodega-info {
+  padding: 15px;
+  text-align: left;
+}
+
+.bodega-info h3 {
+  margin: 0 0 10px;
+  font-size: 2em; /* Increase font size */
+}
+
+.bodega-info p {
+  margin: 0 0 15px;
+  font-size: 1em;
+  color: #555;
+}
+
+.bodega-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #777;
+}
+
+.bodega-visitas, .bodega-etiquetas {
+  background-color: #f1f1f1;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1.2em; /* Increase font size */
+}
+
+@media (max-width: 1200px) {
+  .bodega-card {
+    width: calc(50% - 20px); /* 2 cards per row */
+  }
+}
+@media (min-width: 1200px) {
+  .bodega-card {
+    width: calc(30% - 20px)!important; /* 1 card per row */
+  }
+}
+@media (max-width: 768px) {
+  .bodega-card {
+    width: calc(100% - 20px); /* 1 card per row */
+  }
+}
+

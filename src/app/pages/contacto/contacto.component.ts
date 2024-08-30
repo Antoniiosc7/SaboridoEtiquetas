@@ -18,6 +18,7 @@ export class ContactoComponent implements OnInit {
   contactForm: FormGroup;
   showPopup: boolean = false;
   popupMessage: string = '';
+  isLoading: boolean = false;
 
   constructor(private fb: FormBuilder, private apiService: ApiService) {
     this.contactForm = this.fb.group({
@@ -31,11 +32,14 @@ export class ContactoComponent implements OnInit {
 
   onSubmit(): void {
     if (this.contactForm.valid) {
+      this.isLoading = true;
       this.apiService.sendContactForm(this.contactForm.value).subscribe(
         response => {
+          this.isLoading = false;
           this.showPopupMessage('Mensaje enviado con éxito');
         },
         error => {
+          this.isLoading = false;
           console.error('Error submitting form', error);
         }
       );

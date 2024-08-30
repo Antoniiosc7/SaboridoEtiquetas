@@ -13,6 +13,8 @@
 
     <button type="submit" [disabled]="contactForm.invalid">Enviar</button>
   </form>
+  <div *ngIf="isLoading" class="spinner"></div>
+
 </div>
 
 <div *ngIf="showPopup" class="popup">

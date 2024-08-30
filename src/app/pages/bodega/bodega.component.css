@@ -80,8 +80,8 @@ td.mat-cell {
 }
 @media (min-width: 1600px) {
   .bodegas-all {
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 20%!important;
+    margin-right: 20%!important;
   }
 }
 
@@ -141,4 +141,15 @@ td.mat-cell {
 }
 .justified-text {
   text-align: justify;
+}
+.comentarios {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+@media (max-width: 600px) {
+  .comentarios {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 }

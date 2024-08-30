@@ -6,10 +6,11 @@ import { MatPaginatorIntl, MatPaginatorModule, PageEvent } from '@angular/materi
 import { ApiService } from '../../services/api.service';
 import { Bodega } from '../../models/bodega';
 import { MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardTitle } from "@angular/material/card";
-import {DomSanitizer, SafeHtml, Title} from "@angular/platform-browser";
+import { DomSanitizer, SafeHtml, Title } from "@angular/platform-browser";
 import { API_URL } from "../../../config";
 import { CustomPaginatorIntl } from "../../services/custom-paginator-intl.service";
 import { MatSelectModule } from '@angular/material/select';
+import { ComentariosComponent } from "../../components/comentarios/comentarios.component";
 
 @Component({
   selector: 'app-bodega',
@@ -24,7 +25,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatCardContent,
     MatCardImage,
     MatCardTitle,
-    MatSelectModule
+    MatSelectModule,
+    ComentariosComponent
   ],
   providers: [
     { provide: MatPaginatorIntl, useClass: CustomPaginatorIntl }
@@ -35,7 +37,7 @@ import { MatSelectModule } from '@angular/material/select';
 export class BodegaComponent implements OnInit {
   bodega: Bodega | undefined;
   etiquetas: any[] = [];
-  codBodega: string | null = null;
+  codBodega: string = '';
   displayedColumns: string[] = ['imgUrl1', 'imgUrl2'];
   totalImages: number = 0;
   pageSize: number = 20;
@@ -55,7 +57,8 @@ export class BodegaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.codBodega = this.route.snapshot.paramMap.get('id');
+    const codBodegaParam = this.route.snapshot.paramMap.get('id');
+    this.codBodega = codBodegaParam ? codBodegaParam : '';
     const pageParam = this.route.snapshot.queryParamMap.get('pagina');
     this.currentPage = pageParam ? +pageParam : 1;
 

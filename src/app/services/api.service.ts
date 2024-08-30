@@ -6,6 +6,7 @@ import { API_URL } from '../../config';
 import { Bodega } from '../models/bodega';
 import { Etiquetas } from '../models/etiqueta';
 import {ContactForm} from "../models/contact-form.model";
+import {Comentario} from "../models/comentarios.model";
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getBodegas(): Observable<Bodega[]> {
-    return this.http.get<Bodega[]>(this.apiUrl + 'bodegas');
+  getBodegas(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl + 'bodegas');
   }
 
   getBodegasByCod(codBodega: string): Observable<Bodega> {
@@ -30,7 +31,13 @@ export class ApiService {
   getImagesByCodBodegaAndPage(codBodega: string, page: number): Observable<Etiquetas> {
     return this.http.get<Etiquetas>(this.apiUrl + `bodegas/${codBodega}/images?page=${page}`);
   }
+  submitComment(comment: Comentario): Observable<Comentario> {
+    return this.http.post<Comentario>(`${this.apiUrl}comentarios/submit`, comment);
+  }
 
+  getCommentsByCodBodega(codBodega: string): Observable<Comentario[]> {
+    return this.http.get<Comentario[]>(`${this.apiUrl}comentarios/bodega/${codBodega}`);
+  }
   sendContactForm(data: ContactForm): Observable<any> {
     let params = new HttpParams()
       .set('name', data.nombre)
