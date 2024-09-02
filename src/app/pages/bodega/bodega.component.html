@@ -8,7 +8,7 @@
       <span class="material-icons">visibility</span>
       <span>{{ bodega.visitas }}</span>
     </div>
-    <img [src]="bodega.imgUrl" alt="{{ bodega.nombre }}" class="bodega-img">
+    <img *ngIf="bodega.lVisible" [src]="bodega.imgUrl" alt="{{ bodega.nombre }}" class="bodega-img">
     <p [innerHTML]="getSanitizedDescription(bodega.descripcion)"></p>
     <p *ngIf="bodega.texto">{{ bodega.texto }}</p>
   </div>

@@ -5,6 +5,10 @@
     "/privacidad",
     "/bodega/valdespino",
     "/bodega/valderrama",
-    "/bodega/ysasi"
+    "/bodega/ysasi",
+    "/bodega/dom-ramos",
+    "/bodega/nolasco",
+    "/bodega/rm-romero",
+    "/bodega/manjon"
   ]
 }

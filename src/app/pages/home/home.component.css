@@ -222,3 +222,32 @@
   }
 }
 
+/* src/app/pages/home/home.component.css */
+@keyframes countUp {
+  from {
+    content: '0';
+  }
+  to {
+    content: attr(data-total);
+  }
+}
+
+.total-etiquetas-section h2::after {
+  content: attr(data-total);
+  animation: countUp 2s ease-in-out forwards;
+}
+/* src/app/pages/home/home.component.css */
+.total-etiquetas-section {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.total-etiquetas-section h2 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

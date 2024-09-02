@@ -16,6 +16,7 @@ import {Title} from "@angular/platform-browser";
 })
 export class HomeComponent implements OnInit {
   bodegas: Bodega[] = [];
+  totalEtiquetas: number = 0;
 
   constructor(
     private router: Router,
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit {
     this.apiService.getBodegas().subscribe(data => {
       this.bodegas = data;
       this.titleService.setTitle(`Saborido Etiquetas - Vinos de Jerez`);
+      this.totalEtiquetas = this.bodegas.reduce((sum, bodega) => sum + bodega.numEtiquetas, 0);
 
     });
   }
