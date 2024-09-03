@@ -236,7 +236,6 @@
   content: attr(data-total);
   animation: countUp 2s ease-in-out forwards;
 }
-/* src/app/pages/home/home.component.css */
 .total-etiquetas-section {
   text-align: center;
   margin: 20px 0;
@@ -286,6 +285,7 @@
   color: white;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 6px;
 }
 
 .search-sort-section button:hover {
