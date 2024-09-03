@@ -9,6 +9,15 @@
     "/bodega/dom-ramos",
     "/bodega/nolasco",
     "/bodega/rm-romero",
-    "/bodega/manjon"
+    "/bodega/manjon",
+    "/bodega/espinosa-montero",
+    "/bodega/zorrilla",
+    "/bodega/alvaro",
+    "/bodega/ivison",
+    "/bodega/findlater",
+    "/bodega/bofemsa",
+    "/bodega/otras",
+    "/bodega/oneale",
+    "/bodega/mirabal"
   ]
 }

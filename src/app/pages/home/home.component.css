@@ -251,3 +251,59 @@
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+.total-etiquetas-section {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.total-etiquetas-section h2 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-sort-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.search-sort-section input {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-sort-section button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-sort-section button:hover {
+  background-color: #0056b3;
+}
+
+.search-sort-section button i {
+  margin-right: 5px;
+}
+
+.search-sort-section button:hover {
+  background-color: #0056b3;
+}
+
+.search-sort-section .reset-button {
+  background-color: #dc3545;
+}
+
+.search-sort-section .reset-button:hover {
+  background-color: #c82333;
+}
