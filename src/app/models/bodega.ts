@@ -7,5 +7,5 @@ export interface Bodega {
   imgUrl: string;
   visitas: number;
   numEtiquetas: number;
-  imgVisible: boolean;
+  imgVisible: string;
 }
