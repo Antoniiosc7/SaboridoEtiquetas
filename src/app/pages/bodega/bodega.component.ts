@@ -46,6 +46,7 @@ export class BodegaComponent implements OnInit {
   totalPages: number = 0;
   pageOptions: number[] = [];
   comentarios: boolean=false
+  visible: boolean = false;
   @ViewChild('etiquetasTable', { static: false }) etiquetasTable: ElementRef<HTMLDivElement> | undefined;
 
   constructor(
