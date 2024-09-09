@@ -1,0 +1,44 @@
+<div class="cards-section">
+  <h2>Bodegas</h2>
+  <div class="search-sort-section">
+    <input type="text" [(ngModel)]="searchQuery" (input)="searchBodegas()" placeholder="Buscar bodega...">
+    <button (click)="sortByVisits()">
+      <i class="fas fa-eye"></i> Ordenar por visitas
+      <span *ngIf="sortField === 'visitas'">
+        <i class="fas" [ngClass]="sortOrder === 'asc' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+      </span>
+    </button>
+    <button (click)="sortByEtiquetas()">
+      <i class="fas fa-tags"></i> Ordenar por etiquetas
+      <span *ngIf="sortField === 'etiquetas'">
+        <i class="fas" [ngClass]="sortOrder === 'asc' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+      </span>
+    </button>
+    <button (click)="sortByName()">
+      <i class="fas fa-sort-alpha-down"></i> Ordenar alfabéticamente
+      <span *ngIf="sortField === 'nombre'">
+        <i class="fas" [ngClass]="sortOrder === 'asc' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+      </span>
+    </button>
+    <button (click)="resetFilters()" class="reset-button">
+      <i class="fas fa-times"></i> Resetear filtros
+    </button>
+  </div>
+  <div class="bodega-cards">
+    <div *ngFor="let bodega of paginatedBodegas" class="bodega-card" (click)="goToBodega(bodega.codBodega)">
+      <img [src]="bodega.imgUrl" alt="{{ bodega.nombre }}">
+      <div class="bodega-info">
+        <h3>{{ bodega.nombre }}</h3>
+        <span class="bodega-visitas">{{ bodega.visitas }} visitas</span>
+        <span class="bodega-etiquetas">{{ bodega.numEtiquetas }} etiquetas</span>
+      </div>
+    </div>
+  </div>
+  <div class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 1" class="pagination-button">Anterior</button>
+    <select (change)="goToPage($event)" [value]="currentPage" class="pagination-select">
+      <option *ngFor="let page of totalPagesArray" [value]="page">{{ page }}</option>
+    </select>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="pagination-button">Siguiente</button>
+  </div>
+</div>
