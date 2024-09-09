@@ -144,6 +144,9 @@ export class BodegaComponent implements OnInit {
         } else if (currentIndex < this.etiquetas.length - 1) {
           newIndex = currentIndex + 1;
           newImage = this.etiquetas[newIndex].imgUrl1;
+        } else {
+          this.handleCloseModal(); // Cerrar el modal si es la última imagen
+          return;
         }
       } else {
         if (this.selectedImage === this.etiquetas[currentIndex].imgUrl2 && this.etiquetas[currentIndex].imgUrl1) {
@@ -151,17 +154,29 @@ export class BodegaComponent implements OnInit {
         } else if (currentIndex > 0) {
           newIndex = currentIndex - 1;
           newImage = this.etiquetas[newIndex].imgUrl2 || this.etiquetas[newIndex].imgUrl1;
+        } else {
+          this.handleCloseModal(); // Cerrar el modal si es la primera imagen
+          return;
         }
       }
 
       this.selectedImage = newImage;
       this.updateNavigationButtons(newIndex);
+
+      if (newImage) {
+        const imageName = newImage.split('/').pop();
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: { etiqueta: imageName },
+          queryParamsHandling: 'merge'
+        });
+      }
     }
   }
 
   updateNavigationButtons(currentIndex: number): void {
     this.disablePrev = currentIndex === 0 && this.selectedImage === this.etiquetas[0].imgUrl1;
-    this.disableNext = currentIndex === this.etiquetas.length - 1 && this.selectedImage === this.etiquetas[this.etiquetas.length - 1].imgUrl2;
+    this.disableNext = false; // No deshabilitar el botón "Siguiente"
   }
 
   enlargeImage(imgUrl: string) {
@@ -170,12 +185,11 @@ export class BodegaComponent implements OnInit {
       etiqueta.imgUrl1 === imgUrl || etiqueta.imgUrl2 === imgUrl
     );
     this.updateNavigationButtons(currentIndex);
-    const url = this.router.createUrlTree([], {
+    this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { etiqueta: imgUrl.split('/').pop() },
       queryParamsHandling: 'merge'
-    }).toString();
-    this.locationStrategy.replaceState({}, '', url, '');
+    });
   }
 
   closeImage() {
@@ -197,5 +211,9 @@ export class BodegaComponent implements OnInit {
   getSanitizedDescription(description: string): SafeHtml {
     const formattedDescription = description.replace(/\n/g, '<br>');
     return this.sanitizer.bypassSecurityTrustHtml(`<div class="justified-text">${formattedDescription}</div>`);
+  }
+
+  handleCloseModal(): void {
+    this.closeImage();
   }
 }

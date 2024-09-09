@@ -25,7 +25,7 @@ export class ImageModalComponent {
     if (event.key === 'Escape') {
       this.close.emit();
     } else if (event.key === 'ArrowRight' && !this.disableNext) {
-      this.next.emit();
+      this.nextImage();
     } else if (event.key === 'ArrowLeft' && !this.disablePrev) {
       this.prev.emit();
     }
@@ -36,5 +36,19 @@ export class ImageModalComponent {
     navigator.clipboard.writeText(currentUrl).then(() => {
       notification.showNotification('Enlace copiado al portapapeles');
     });
+  }
+
+  nextImage(): void {
+    this.next.emit();
+    setTimeout(() => {
+      if (this.imageUrl) {
+        const imageName = this.imageUrl.split('/').pop();
+        if (imageName) { // Ensure imageName is defined
+          const newUrl = new URL(window.location.href);
+          newUrl.searchParams.set('etiqueta', imageName);
+          history.pushState(null, '', newUrl.toString());
+        }
+      }
+    }, 0); // A small delay to ensure the image URL is updated
   }
 }

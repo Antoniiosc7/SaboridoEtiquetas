@@ -52,10 +52,12 @@
     </div>
   </div>
 
+  <!-- bodega.component.html -->
   <app-image-modal
-    *ngIf="selectedImage"
     [imageUrl]="selectedImage"
-    (close)="closeImage()"
+    [disablePrev]="disablePrev"
+    [disableNext]="disableNext"
+    (close)="handleCloseModal()"
     (next)="navigateImage('next')"
     (prev)="navigateImage('prev')">
   </app-image-modal>
