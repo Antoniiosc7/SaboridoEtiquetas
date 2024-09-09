@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { NgIf } from "@angular/common";
-import {NotificationComponent} from "../../../components/notification/notification.component";
+import { NotificationComponent } from "../../../components/notification/notification.component";
 
 @Component({
   selector: 'app-image-modal',
@@ -32,10 +32,9 @@ export class ImageModalComponent {
   }
 
   copyLink(notification: NotificationComponent): void {
-    if (this.imageUrl) {
-      navigator.clipboard.writeText(this.imageUrl).then(() => {
-        notification.showNotification('Enlace copiado al portapapeles');
-      });
-    }
+    const currentUrl = window.location.href;
+    navigator.clipboard.writeText(currentUrl).then(() => {
+      notification.showNotification('Enlace copiado al portapapeles');
+    });
   }
 }
