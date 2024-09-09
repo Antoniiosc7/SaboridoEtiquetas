@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild, ElementRef, Inject, PLATFORM_ID} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {isPlatformBrowser, NgForOf, NgIf} from '@angular/common';
+import {isPlatformBrowser, LocationStrategy, NgForOf, NgIf} from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorIntl, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ApiService } from '../../services/api.service';
@@ -11,6 +11,7 @@ import { API_URL, COMENTARIOS } from "../../../config";
 import { CustomPaginatorIntl } from "../../services/custom-paginator-intl.service";
 import { MatSelectModule } from '@angular/material/select';
 import { ComentariosComponent } from "../../components/comentarios/comentarios.component";
+import {ImageModalComponent} from "./image-modal/image-modal.component";
 
 @Component({
   selector: 'app-bodega',
@@ -26,7 +27,8 @@ import { ComentariosComponent } from "../../components/comentarios/comentarios.c
     MatCardImage,
     MatCardTitle,
     MatSelectModule,
-    ComentariosComponent
+    ComentariosComponent,
+    ImageModalComponent
   ],
   providers: [
     { provide: MatPaginatorIntl, useClass: CustomPaginatorIntl }
@@ -46,7 +48,9 @@ export class BodegaComponent implements OnInit {
   totalPages: number = 0;
   pageOptions: number[] = [];
   comentarios: boolean=false
-  visible: boolean = false;
+  disablePrev: boolean = false;
+  disableNext: boolean = false;
+
   @ViewChild('etiquetasTable', { static: false }) etiquetasTable: ElementRef<HTMLDivElement> | undefined;
 
   constructor(
@@ -55,6 +59,7 @@ export class BodegaComponent implements OnInit {
     private apiService: ApiService,
     private titleService: Title,
     private sanitizer: DomSanitizer,
+    private locationStrategy: LocationStrategy,
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
@@ -64,7 +69,12 @@ export class BodegaComponent implements OnInit {
     this.codBodega = codBodegaParam ? codBodegaParam : '';
     const pageParam = this.route.snapshot.queryParamMap.get('pagina');
     this.currentPage = pageParam ? +pageParam : 1;
-
+    this.route.queryParams.subscribe(params => {
+      const etiqueta = params['etiqueta'];
+      if (etiqueta) {
+        this.selectedImage = `https://certs.antoniosaborido.es:8443/api/bodegas/${this.codBodega}/images/${etiqueta}`;
+      }
+    });
     if (this.codBodega) {
       this.apiService.getBodegasByCod(this.codBodega).subscribe(data => {
         this.bodega = data;
@@ -119,12 +129,65 @@ export class BodegaComponent implements OnInit {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }  }
 
+  navigateImage(direction: 'prev' | 'next'): void {
+    const currentIndex = this.etiquetas.findIndex(etiqueta =>
+      etiqueta.imgUrl1 === this.selectedImage || etiqueta.imgUrl2 === this.selectedImage
+    );
+
+    if (currentIndex !== -1) {
+      let newIndex = currentIndex;
+      let newImage: string | null = null;
+
+      if (direction === 'next') {
+        if (this.selectedImage === this.etiquetas[currentIndex].imgUrl1 && this.etiquetas[currentIndex].imgUrl2) {
+          newImage = this.etiquetas[currentIndex].imgUrl2;
+        } else if (currentIndex < this.etiquetas.length - 1) {
+          newIndex = currentIndex + 1;
+          newImage = this.etiquetas[newIndex].imgUrl1;
+        }
+      } else {
+        if (this.selectedImage === this.etiquetas[currentIndex].imgUrl2 && this.etiquetas[currentIndex].imgUrl1) {
+          newImage = this.etiquetas[currentIndex].imgUrl1;
+        } else if (currentIndex > 0) {
+          newIndex = currentIndex - 1;
+          newImage = this.etiquetas[newIndex].imgUrl2 || this.etiquetas[newIndex].imgUrl1;
+        }
+      }
+
+      this.selectedImage = newImage;
+      this.updateNavigationButtons(newIndex);
+    }
+  }
+
+  updateNavigationButtons(currentIndex: number): void {
+    this.disablePrev = currentIndex === 0 && this.selectedImage === this.etiquetas[0].imgUrl1;
+    this.disableNext = currentIndex === this.etiquetas.length - 1 && this.selectedImage === this.etiquetas[this.etiquetas.length - 1].imgUrl2;
+  }
+
   enlargeImage(imgUrl: string) {
     this.selectedImage = imgUrl;
+    const currentIndex = this.etiquetas.findIndex(etiqueta =>
+      etiqueta.imgUrl1 === imgUrl || etiqueta.imgUrl2 === imgUrl
+    );
+    this.updateNavigationButtons(currentIndex);
+    const url = this.router.createUrlTree([], {
+      relativeTo: this.route,
+      queryParams: { etiqueta: imgUrl.split('/').pop() },
+      queryParamsHandling: 'merge'
+    }).toString();
+    this.locationStrategy.replaceState({}, '', url, '');
   }
 
   closeImage() {
     this.selectedImage = null;
+    this.disablePrev = false;
+    this.disableNext = false;
+    const url = this.router.createUrlTree([], {
+      relativeTo: this.route,
+      queryParams: { etiqueta: null },
+      queryParamsHandling: 'merge'
+    }).toString();
+    this.locationStrategy.replaceState({}, '', url, '');
   }
 
   navigateHome() {

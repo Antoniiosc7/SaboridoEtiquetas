@@ -1,0 +1,12 @@
+<app-notification #notification></app-notification>
+<div class="image-modal" *ngIf="imageUrl">
+  <div class="modal-content">
+    <img [src]="imageUrl" class="large-image">
+    <div>
+      <button class="close" (click)="close.emit()">Cerrar</button>
+      <button class="copy" (click)="copyLink(notification)">Copiar enlace</button>
+      <button class="prev" (click)="prev.emit()" [disabled]="disablePrev">Anterior</button>
+      <button class="next" (click)="next.emit()" [disabled]="disableNext">Siguiente</button>
+    </div>
+  </div>
+</div>

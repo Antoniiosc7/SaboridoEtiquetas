@@ -18,13 +18,23 @@
       <ng-container matColumnDef="imgUrl1">
         <th mat-header-cell *matHeaderCellDef> Etiquetas </th>
         <td mat-cell *matCellDef="let etiqueta">
-          <img *ngIf="etiqueta.imgUrl1" [src]="etiqueta.imgUrl1" alt="Etiqueta 1" class="etiqueta-img" (click)="enlargeImage(etiqueta.imgUrl1)">
+          <img *ngIf="etiqueta.imgUrl1"
+               [src]="etiqueta.imgUrl1"
+               [srcset]="etiqueta.imgUrl1 + ' 1x, ' + etiqueta.imgUrl1.replace('.webp', '@2x.webp') + ' 2x'"
+               alt="Etiqueta 1"
+               class="etiqueta-img"
+               (click)="enlargeImage(etiqueta.imgUrl1)">
         </td>
       </ng-container>
       <ng-container matColumnDef="imgUrl2">
         <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let etiqueta">
-          <img *ngIf="etiqueta.imgUrl2" [src]="etiqueta.imgUrl2" alt="Etiqueta 2" class="etiqueta-img" (click)="enlargeImage(etiqueta.imgUrl2)">
+          <img *ngIf="etiqueta.imgUrl2"
+               [src]="etiqueta.imgUrl2"
+               [srcset]="etiqueta.imgUrl2 + ' 1x, ' + etiqueta.imgUrl2.replace('.webp', '@2x.webp') + ' 2x'"
+               alt="Etiqueta 2"
+               class="etiqueta-img"
+               (click)="enlargeImage(etiqueta.imgUrl2)">
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -42,9 +52,13 @@
     </div>
   </div>
 
-  <div *ngIf="selectedImage" class="image-modal" (click)="closeImage()">
-    <img [src]="selectedImage" class="large-image">
-  </div>
+  <app-image-modal
+    *ngIf="selectedImage"
+    [imageUrl]="selectedImage"
+    (close)="closeImage()"
+    (next)="navigateImage('next')"
+    (prev)="navigateImage('prev')">
+  </app-image-modal>
 </div>
 <div *ngIf="comentarios" class="comentarios">
   <app-comentarios [codBodega]="codBodega!"></app-comentarios>
