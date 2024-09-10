@@ -46,6 +46,7 @@
     "/bodega/mv-tocon",
     "/bodega/pozo-cia",
     "/bodega/sanchez-mesa",
-    "/bodega/segura-sl"
+    "/bodega/segura-sl",
+    "/bodegas"
   ]
 }
