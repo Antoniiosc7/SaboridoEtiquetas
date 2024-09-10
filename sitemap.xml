@@ -20,6 +20,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://saboridoetiquetas.es/bodegas</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://saboridoetiquetas.es/bodega/valdespino</loc>
     <lastmod>2024-08-30</lastmod>
     <changefreq>monthly</changefreq>
