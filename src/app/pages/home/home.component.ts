@@ -25,7 +25,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private titleService: Title
+    private titleService: Title,
+    protected router: Router
   ) { }
 
   ngOnInit(): void {

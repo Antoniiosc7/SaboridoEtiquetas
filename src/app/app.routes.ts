@@ -5,6 +5,7 @@ import {BodegaComponent} from "./pages/bodega/bodega.component";
 import {ContactoComponent} from "./pages/contacto/contacto.component";
 import {PrivacidadComponent} from "./pages/privacidad/privacidad.component";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
+import {BodegasComponent} from "./pages/home/bodegas/bodegas.component";
 
 export const routes: Routes = [
   {
@@ -17,6 +18,7 @@ export const routes: Routes = [
   },
   { path: 'contacto', component: ContactoComponent },
   { path: 'privacidad', component: PrivacidadComponent },
+  { path: 'bodegas', component: BodegasComponent },
   { path: '**', component: NotFoundComponent }
 
 ];

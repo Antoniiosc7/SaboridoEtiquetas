@@ -1,5 +1,17 @@
 <div class="cards-section">
-  <h2>Bodegas</h2>
+  <div *ngIf="showAll" class="view-all-button">
+    <button (click)="goToHome()" class="view-all">Volver a la página de inicio</button>
+  </div>
+  <h2 *ngIf="!showAll">Bodegas</h2>
+  <h1 *ngIf="showAll">Bodegas</h1>
+  <div *ngIf="showAll" class="descripcion">
+    <p>
+      En esta página encontrarás una selección de bodegas de vino de Jerez, cada una con su propia historia y estilo. Explora las etiquetas de vinos de Jerez que han sido creadas por estas bodegas y descubre la diversidad de diseños y estilos que existen en el mundo del vino. Para encontrar una bodega en particular, utiliza el buscador o elige una de las opciones de ordenamiento disponibles. Actualmente hay {{numTotalBodegas}} bodegas con etiquetas disponibles.
+    </p>
+  </div>
+  <div *ngIf="!showAll" class="view-all-button">
+    <button (click)="router.navigate(['/bodegas'])" class="view-all">Ver todas</button>
+  </div>
   <div class="search-sort-section">
     <input type="text" [(ngModel)]="searchQuery" (input)="searchBodegas()" placeholder="Buscar bodega...">
     <button (click)="sortByVisits()">
@@ -24,7 +36,7 @@
       <i class="fas fa-times"></i> Resetear filtros
     </button>
   </div>
-  <div class="bodega-cards">
+  <div *ngIf="!showAll" class="bodega-cards">
     <div *ngFor="let bodega of paginatedBodegas" class="bodega-card" (click)="goToBodega(bodega.codBodega)">
       <img [src]="bodega.imgUrl" alt="{{ bodega.nombre }}">
       <div class="bodega-info">
@@ -34,11 +46,22 @@
       </div>
     </div>
   </div>
-  <div class="pagination-controls">
+  <div *ngIf="showAll" class="bodega-cards2">
+    <div *ngFor="let bodega of paginatedBodegas" class="bodega-card2" (click)="goToBodega(bodega.codBodega)">
+      <img [src]="bodega.imgUrl" alt="{{ bodega.nombre }}">
+      <div class="bodega-info">
+        <h3>{{ bodega.nombre }}</h3>
+        <span class="bodega-visitas">{{ bodega.visitas }} visitas</span>
+        <span class="bodega-etiquetas">{{ bodega.numEtiquetas }} etiquetas</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!showAll" class="pagination-controls">
     <button (click)="prevPage()" [disabled]="currentPage === 1" class="pagination-button">Anterior</button>
     <select (change)="goToPage($event)" [value]="currentPage" class="pagination-select">
       <option *ngFor="let page of totalPagesArray" [value]="page">{{ page }}</option>
     </select>
     <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="pagination-button">Siguiente</button>
   </div>
+
 </div>
