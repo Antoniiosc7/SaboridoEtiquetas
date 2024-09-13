@@ -7,7 +7,7 @@ import { ApiService } from '../../services/api.service';
 import { Bodega } from '../../models/bodega';
 import { MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardTitle } from "@angular/material/card";
 import { DomSanitizer, SafeHtml, Title } from "@angular/platform-browser";
-import { API_URL, COMENTARIOS } from "../../../config";
+import {API_URL, COMENTARIOS, WEB_URL} from "../../../config";
 import { CustomPaginatorIntl } from "../../services/custom-paginator-intl.service";
 import { MatSelectModule } from '@angular/material/select';
 import { ComentariosComponent } from "../../components/comentarios/comentarios.component";
@@ -72,7 +72,7 @@ export class BodegaComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       const etiqueta = params['etiqueta'];
       if (etiqueta) {
-        this.selectedImage = `https://certs.antoniosaborido.es:8443/api/bodegas/${this.codBodega}/images/${etiqueta}`;
+        this.selectedImage = `${WEB_URL}/assets/bodegas/${this.codBodega}/${etiqueta}`;
       }
     });
     if (this.codBodega) {
@@ -88,7 +88,7 @@ export class BodegaComponent implements OnInit {
   fetchImages(page: number): void {
     if (this.codBodega) {
       this.apiService.getImagesByCodBodegaAndPage(this.codBodega, page).subscribe(data => {
-        const images = data.images.map(img => ({ imgUrl: `${API_URL}/api/bodegas/${this.codBodega}/images/${img}` }));
+        const images = data.images.map(img => ({ imgUrl: `${WEB_URL}/assets/bodegas/${this.codBodega}/${img}` }));
         this.etiquetas = [];
         for (let i = 0; i < images.length; i += 2) {
           this.etiquetas.push({
