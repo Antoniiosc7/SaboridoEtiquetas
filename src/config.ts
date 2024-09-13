@@ -7,3 +7,4 @@ export const PROTOCOLO = environment.PROTOCOLO;
 export const API_URL = `${PROTOCOLO}://${BASE_URL}:${API_PORT}`;
 
 export const COMENTARIOS = environment.COMENTARIOS;
+export const WEB_URL = `${PROTOCOLO}://saboridoetiquetas.es`;

@@ -62,14 +62,14 @@ export class BodegasComponent implements OnInit {
   }
 
   searchBodegas() {
-    this.filteredBodegas = this.bodegas.filter(bodega =>
-      bodega.nombre.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
-    if (this.showAll) {
-      this.paginatedBodegas = this.filteredBodegas;
+    if (this.searchQuery.trim() === '') {
+      this.filteredBodegas = [...this.bodegas];
     } else {
-      this.updatePagination();
+      this.filteredBodegas = this.bodegas.filter(bodega =>
+        bodega.nombre.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
     }
+    this.updatePagination();
   }
 
   sortByVisits() {
