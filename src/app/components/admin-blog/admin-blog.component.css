@@ -1,0 +1,62 @@
+/* src/app/components/admin-blog/admin-blog.component.css */
+.admin-blog {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.admin-blog h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-blog form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-blog label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.admin-blog input[type="text"],
+.admin-blog textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-blog quill-editor {
+  margin-bottom: 15px;
+}
+
+.admin-blog .ql-container {
+  height: 200px; /* Ajusta la altura según tus necesidades */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.admin-blog .ql-toolbar {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.admin-blog button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-blog button:hover {
+  background-color: #0056b3;
+}

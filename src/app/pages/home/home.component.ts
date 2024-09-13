@@ -6,6 +6,7 @@ import {Bodega} from "../../models/bodega";
 import {Title} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {BodegasComponent} from "./bodegas/bodegas.component";
+import {BlogComponent} from "../../components/blog/blog.component";
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ import {BodegasComponent} from "./bodegas/bodegas.component";
   imports: [
     NgForOf,
     FormsModule,
-    BodegasComponent
+    BodegasComponent,
+    BlogComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']

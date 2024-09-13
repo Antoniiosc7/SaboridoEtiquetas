@@ -1,0 +1,20 @@
+<div class="admin-blog">
+  <h2>Crear/Editar Artículo de Blog</h2>
+  <form (ngSubmit)="onSubmit()">
+    <label for="title">Título:</label>
+    <input type="text" id="title" [(ngModel)]="blog.title" name="title" required>
+
+    <input type="text" id="codBlog" [(ngModel)]="blog.codBlog" name="title" required>
+
+    <label for="imageUrl">URL de la Imagen:</label>
+    <input type="text" id="imageUrl" [(ngModel)]="blog.imageUrl" name="imageUrl" required>
+
+    <label for="description">Descripción:</label>
+    <textarea id="description" [(ngModel)]="blog.description" name="description" required></textarea>
+
+    <label for="content">Contenido:</label>
+    <quill-editor [(ngModel)]="blog.content" name="content"></quill-editor>
+
+    <button type="submit">Guardar</button>
+  </form>
+</div>

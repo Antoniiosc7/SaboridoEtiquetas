@@ -1,0 +1,245 @@
+.cards-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog-cards, .blog-cards2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.blog-card, .blog-card2 {
+  flex: 1 1 calc(33.333% - 20px); /* Adjust the percentage to fit 2 or 3 cards per row */
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.blog-card img, .blog-card2 img {
+  width: 100%;
+  height: auto;
+}
+
+.blog-card:hover, .blog-card2:hover {
+  transform: scale(1.05);
+}
+
+.blog-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-button, .pagination-select {
+  margin: 0 5px;
+}
+
+.info-section, .cards-section {
+  padding: 20px;
+}
+
+/* Styles for large screens */
+@media (min-width: 1024px) {
+  .page-container {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+}
+
+
+.justified-text {
+  text-align: justify;
+  text-indent: 2em; /* Indent the first line of each paragraph */
+  font-size: 1.2em;
+}
+.info-section{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+/* src/app/pages/home/home.component.css */
+.hero-section {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo-center {
+  width: 150px;
+  height: auto;
+}
+
+.page-container {
+  padding: 20px;
+}
+
+.info-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cards-section {
+  text-align: center;
+}
+
+/* src/app/pages/home/home.component.css */
+@keyframes countUp {
+  from {
+    content: '0';
+  }
+  to {
+    content: attr(data-total);
+  }
+}
+
+.total-etiquetas-section h2::after {
+  content: attr(data-total);
+  animation: countUp 2s ease-in-out forwards;
+}
+.total-etiquetas-section {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.total-etiquetas-section h2 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.total-etiquetas-section {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.total-etiquetas-section h2 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-sort-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.search-sort-section input {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-sort-section button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.search-sort-section button:hover {
+  background-color: #0056b3;
+}
+
+.search-sort-section button i {
+  margin-right: 5px;
+}
+
+.search-sort-section button:hover {
+  background-color: #0056b3;
+}
+
+.search-sort-section .reset-button {
+  background-color: #dc3545;
+}
+
+.search-sort-section .reset-button:hover {
+  background-color: #c82333;
+}
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.pagination-select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  font-size: 16px;
+  cursor: pointer;
+}
+.view-all-button {
+  text-align: right;
+  margin-right: 80px;
+}
+
+.view-all-button .view-all {
+  padding: 10px 20px;
+  border: none;
+  background-color: #516374 !important;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-all-button .view-all:hover {
+  background-color: #262d35 !important;
+}
+
+.descripcion {
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: justify;
+  text-indent: 2em;
+  font-size: 20px;
+}

@@ -1,0 +1,66 @@
+<div class="cards-section">
+  <div *ngIf="showAll" class="view-all-button">
+    <button (click)="goToHome()" class="view-all">Volver a la página de inicio</button>
+  </div>
+  <h2 *ngIf="!showAll">Blogs</h2>
+  <h1 *ngIf="showAll">Blogs</h1>
+  <div *ngIf="showAll" class="descripcion">
+    <p>
+      En esta página encontrarás una selección de artículos de blog, cada uno con su propio contenido y estilo. Explora los artículos de blog que han sido creados y descubre la diversidad de temas y estilos que existen. Para encontrar un artículo en particular, utiliza el buscador o elige una de las opciones de ordenamiento disponibles. Actualmente hay {{numTotalBlogs}} artículos disponibles.
+    </p>
+  </div>
+  <div *ngIf="!showAll" class="view-all-button">
+    <button (click)="router.navigate(['/blogs'])" class="view-all">Ver todos</button>
+  </div>
+  <div class="search-sort-section">
+    <input type="text" [(ngModel)]="searchQuery" (input)="searchBlogs()" placeholder="Buscar blogs...">
+    <button (click)="sortByVisits()">
+      <i class="fas fa-eye"></i> Ordenar por visitas
+      <span *ngIf="sortField === 'visitas'">
+        <i class="fas" [ngClass]="sortOrder === 'asc' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+      </span>
+    </button>
+    <button (click)="sortByDate()">
+      <i class="fas fa-calendar-alt"></i> Ordenar por fecha
+      <span *ngIf="sortField === 'fecha'">
+        <i class="fas" [ngClass]="sortOrder === 'asc' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+      </span>
+    </button>
+    <button (click)="sortByName()">
+      <i class="fas fa-sort-alpha-down"></i> Ordenar alfabéticamente
+      <span *ngIf="sortField === 'nombre'">
+        <i class="fas" [ngClass]="sortOrder === 'asc' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+      </span>
+    </button>
+    <button (click)="resetFilters()" class="reset-button">
+      <i class="fas fa-times"></i> Resetear filtros
+    </button>
+  </div>
+  <div *ngIf="!showAll" class="blog-cards">
+    <div *ngFor="let blog of paginatedBlogs" class="blog-card" (click)="goToBlogDetail(blog.codBlog)">
+      <img [src]="blog.imageUrl" alt="{{ blog.title }}">
+      <div class="blog-info">
+        <h3>{{ blog.title }}</h3>
+        <span class="blog-visitas">{{ blog.visitas }} visitas</span>
+        <span class="blog-fecha">{{ blog.fecha | date }}</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showAll" class="blog-cards2">
+    <div *ngFor="let blog of paginatedBlogs" class="blog-card2" (click)="goToBlogDetail(blog.codBlog)">
+      <img [src]="blog.imageUrl" alt="{{ blog.title }}">
+      <div class="blog-info">
+        <h3>{{ blog.title }}</h3>
+        <span class="blog-visitas">{{ blog.visitas }} visitas</span>
+        <span class="blog-fecha">{{ blog.fecha | date }}</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!showAll" class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 1" class="pagination-button">Anterior</button>
+    <select (change)="goToPage($event)" [value]="currentPage" class="pagination-select">
+      <option *ngFor="let page of totalPagesArray" [value]="page">{{ page }}</option>
+    </select>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="pagination-button">Siguiente</button>
+  </div>
+</div>
