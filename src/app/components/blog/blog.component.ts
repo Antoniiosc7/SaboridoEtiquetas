@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {DatePipe, NgClass, NgForOf, NgIf} from '@angular/common';
+import { DatePipe, NgClass, NgForOf, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
@@ -28,7 +28,7 @@ export class BlogComponent implements OnInit {
   itemsPerPage: number = 6;
   totalPages: number = 1;
   sortOrder: string = 'asc'; // 'asc' or 'desc'
-  sortField: string = ''; // 'visitas', 'fecha', or 'nombre'
+  sortField: string = ''; // 'visitas', 'createdAt', or 'nombre'
   totalPagesArray: number[] = [];
   showAll: boolean = false;
   numTotalBlogs!: number;
@@ -55,6 +55,7 @@ export class BlogComponent implements OnInit {
       this.blogs = data;
       this.numTotalBlogs = this.blogs.length;
       this.filteredBlogs = [...this.blogs];
+      this.sortByDate(); // Ordena por fecha de creación de más nueva a más vieja
       if (this.showAll) {
         this.paginatedBlogs = this.filteredBlogs;
       } else {
@@ -86,9 +87,9 @@ export class BlogComponent implements OnInit {
   }
 
   sortByDate() {
-    this.sortField = 'fecha';
+    this.sortField = 'createdAt';
     this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
-    this.filteredBlogs.sort((a, b) => this.sortOrder === 'asc' ? new Date(a.fecha).getTime() - new Date(b.fecha).getTime() : new Date(b.fecha).getTime() - new Date(a.fecha).getTime());
+    this.filteredBlogs.sort((a, b) => this.sortOrder === 'asc' ? new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime() : new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     if (this.showAll) {
       this.paginatedBlogs = this.filteredBlogs;
     } else {

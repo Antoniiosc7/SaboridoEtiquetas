@@ -47,6 +47,8 @@
     "/bodega/pozo-cia",
     "/bodega/sanchez-mesa",
     "/bodega/segura-sl",
-    "/bodegas"
+    "/bodegas",
+    "/blogs",
+    "/bodega/wisdom-warter"
   ]
 }

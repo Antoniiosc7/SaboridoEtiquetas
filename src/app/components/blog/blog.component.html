@@ -22,7 +22,7 @@
     </button>
     <button (click)="sortByDate()">
       <i class="fas fa-calendar-alt"></i> Ordenar por fecha
-      <span *ngIf="sortField === 'fecha'">
+      <span *ngIf="sortField === 'createdAt'">
         <i class="fas" [ngClass]="sortOrder === 'asc' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
       </span>
     </button>
@@ -42,7 +42,7 @@
       <div class="blog-info">
         <h3>{{ blog.title }}</h3>
         <span class="blog-visitas">{{ blog.visitas }} visitas</span>
-        <span class="blog-fecha">{{ blog.fecha | date }}</span>
+        <span class="blog-fecha">{{ blog.createdAt | date }}</span>
       </div>
     </div>
   </div>
@@ -52,7 +52,7 @@
       <div class="blog-info">
         <h3>{{ blog.title }}</h3>
         <span class="blog-visitas">{{ blog.visitas }} visitas</span>
-        <span class="blog-fecha">{{ blog.fecha | date }}</span>
+        <span class="blog-fecha">{{ blog.createdAt | date }}</span>
       </div>
     </div>
   </div>

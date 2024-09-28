@@ -40,10 +40,14 @@
 }
 
 .blog-info {
-  padding: 10px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.blog-fecha {
+  margin-top: 5px; /* Ajusta el margen superior para dejar más espacio */
+}
 .pagination-controls {
   display: flex;
   justify-content: center;
