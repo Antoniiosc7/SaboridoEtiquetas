@@ -18,9 +18,9 @@
   margin: 0 auto 20px;
 }
 
-.blog-detail p {
-  text-align: justify;
-  text-indent: 2em; /* Sangría en la primera línea */
+::ng-deep .blog-detail p {
+  text-align: justify !important;
+  text-indent: 2em !important; /* Sangría en la primera línea */
   margin-bottom: 1em;
 }
 
@@ -30,7 +30,31 @@
   color: #555;
 }
 
+.blog-detail .blog-info p {
+  display: block; /* Asegura que cada párrafo esté en una línea separada */
+}
+
 .blog-detail .blog-info strong {
-  display: block;
-  margin-bottom: 5px;
+  display: inline;
+}
+
+.back-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30px;
+  margin-top: 20px;
+}
+
+.back-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #516374;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #262d35;
 }

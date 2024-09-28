@@ -10,6 +10,18 @@
   justify-content: center;
   gap: 20px;
 }
+.blog-cards2{
+  margin-right: 8%;
+  margin-left: 8%;
+}
+.blog-card2{
+  flex: 1 1 calc(33.333% - 20px); /* Ajusta el porcentaje para que quepan 2 o 3 tarjetas por fila */
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border: 2px; /* Borde gris grueso */
+}
 
 .blog-card, .blog-card2 {
   flex: 1 1 calc(33.333% - 20px); /* Adjust the percentage to fit 2 or 3 cards per row */
@@ -217,9 +229,13 @@
   font-size: 16px;
   cursor: pointer;
 }
+
+
 .view-all-button {
-  text-align: right;
-  margin-right: 80px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 80px;
 }
 
 .view-all-button .view-all {
@@ -230,6 +246,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  text-align: right;
 }
 
 .view-all-button .view-all:hover {
