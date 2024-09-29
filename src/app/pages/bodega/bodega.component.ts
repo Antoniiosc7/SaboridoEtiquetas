@@ -115,13 +115,15 @@ export class BodegaComponent implements OnInit {
   }
 
   goToPage(page: number): void {
-    this.currentPage = page;
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: { pagina: this.currentPage },
-      queryParamsHandling: 'merge'
-    });
-    this.fetchImages(this.currentPage);
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: { pagina: this.currentPage },
+        queryParamsHandling: 'merge'
+      });
+      this.fetchImages(this.currentPage);
+    }
   }
 
   scrollToTop(): void {

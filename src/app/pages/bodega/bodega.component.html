@@ -39,14 +39,15 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="etiqueta-row"></tr>
     </table>
     <div class="paginator-container">
-      <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage <= 1">Anterior</button>
-      <span>Página {{ currentPage }} de {{ totalPages }}</span>
-      <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage >= totalPages">Siguiente</button>
-      <mat-form-field>
+      <button class="paginator-button" (click)="goToPage(currentPage - 1)" [disabled]="currentPage <= 1">Anterior</button>
+      <span class="paginator-current-page">Página</span>
+      <mat-form-field class="paginator-select-field">
         <mat-select [(value)]="currentPage" (selectionChange)="goToPage($event.value)">
           <mat-option *ngFor="let page of pageOptions" [value]="page">{{ page }}</mat-option>
         </mat-select>
       </mat-form-field>
+      <span class="paginator-current-page">de {{ totalPages }}</span>
+      <button class="paginator-button" (click)="goToPage(currentPage + 1)" [disabled]="currentPage >= totalPages">Siguiente</button>
     </div>
   </div>
 

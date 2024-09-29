@@ -26,6 +26,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://saboridoetiquetas.es/blogs</loc>
+    <lastmod>2024-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://saboridoetiquetas.es/bodega/valdespino</loc>
     <lastmod>2024-08-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -202,6 +208,12 @@
   <url>
     <loc>https://saboridoetiquetas.es/bodega/del-horno</loc>
     <lastmod>2024-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saboridoetiquetas.es/bodega/wisdom-warter</loc>
+    <lastmod>2024-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
