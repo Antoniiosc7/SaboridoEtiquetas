@@ -1,17 +1,17 @@
-import {Component, OnInit, ViewChild, ElementRef, Inject, PLATFORM_ID} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {isPlatformBrowser, LocationStrategy, NgForOf, NgIf} from '@angular/common';
+import { isPlatformBrowser, LocationStrategy, NgForOf, NgIf } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorIntl, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ApiService } from '../../services/api.service';
 import { Bodega } from '../../models/bodega';
 import { MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardTitle } from "@angular/material/card";
-import { DomSanitizer, SafeHtml, Title } from "@angular/platform-browser";
-import {API_URL, COMENTARIOS, WEB_URL} from "../../../config";
+import { DomSanitizer, SafeHtml, Title, Meta } from "@angular/platform-browser";
+import { API_URL, COMENTARIOS, WEB_URL } from "../../../config";
 import { CustomPaginatorIntl } from "../../services/custom-paginator-intl.service";
 import { MatSelectModule } from '@angular/material/select';
 import { ComentariosComponent } from "../../components/comentarios/comentarios.component";
-import {ImageModalComponent} from "./image-modal/image-modal.component";
+import { ImageModalComponent } from "./image-modal/image-modal.component";
 
 @Component({
   selector: 'app-bodega',
@@ -47,7 +47,7 @@ export class BodegaComponent implements OnInit {
   selectedImage: string | null = null;
   totalPages: number = 0;
   pageOptions: number[] = [];
-  comentarios: boolean=false
+  comentarios: boolean = false;
   disablePrev: boolean = false;
   disableNext: boolean = false;
 
@@ -58,6 +58,7 @@ export class BodegaComponent implements OnInit {
     private router: Router,
     private apiService: ApiService,
     private titleService: Title,
+    private metaService: Meta,
     private sanitizer: DomSanitizer,
     private locationStrategy: LocationStrategy,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -79,10 +80,28 @@ export class BodegaComponent implements OnInit {
       this.apiService.getBodegasByCod(this.codBodega).subscribe(data => {
         this.bodega = data;
         this.titleService.setTitle(`${data.nombre} - Saborido Etiquetas`);
+        this.setCanonicalURL();
       });
       this.apiService.actualizaContador(this.codBodega).subscribe();
       this.fetchImages(this.currentPage);
     }
+  }
+
+  setCanonicalURL() {
+    const url = this.router.url;
+    this.metaService.updateTag({ name: 'canonical', content: `${WEB_URL}${url}` });
+    this.metaService.updateTag({ name: 'description', content: this.bodega!.descripcion });
+    this.metaService.updateTag({ name: 'keywords', content: 'bodega, jerez, ' + this.bodega!.codBodega + ', ' + this.bodega!.nombre });
+    this.metaService.updateTag({ name: 'robots', content: 'index, follow' });
+    // Agregar etiquetas meta para las imágenes
+    this.etiquetas.forEach((etiqueta, index) => {
+      if (etiqueta.imgUrl1) {
+        this.metaService.updateTag({ name: `image${index * 2}`, content: etiqueta.imgUrl1 });
+      }
+      if (etiqueta.imgUrl2) {
+        this.metaService.updateTag({ name: `image${index * 2 + 1}`, content: etiqueta.imgUrl2 });
+      }
+    });
   }
 
   fetchImages(page: number): void {
@@ -129,7 +148,8 @@ export class BodegaComponent implements OnInit {
   scrollToTop(): void {
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }  }
+    }
+  }
 
   navigateImage(direction: 'prev' | 'next'): void {
     const currentIndex = this.etiquetas.findIndex(etiqueta =>
