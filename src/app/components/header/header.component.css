@@ -11,7 +11,13 @@
   display: flex;
   align-items: center;
 }
+.active-home {
+  color: white;
+}
 
+.home-link {
+  color: #d1d5db; /* Tailwind CSS gray-300 */
+}
 .logo img {
   height: 50px;
   margin-right: 10px; /* Espacio entre el logo y el texto */

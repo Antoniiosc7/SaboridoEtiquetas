@@ -1,24 +1,27 @@
-<div class="hero-section">
-  <div class="overlay">
-    <img src="assets/logo.png" alt="Saborido Etiquetas" class="logo-center">
-    <h1>Saborido Etiquetas</h1>
-    <p>Una colección de etiquetas de vinos de Jerez</p>
+<div class="hero-section bg-cover bg-center h-[40rem] flex justify-center items-center relative text-white text-center mb-8" style="background-image: url('https://images.rimontgowineries.com/img/slider/dos/3/26de37ee39f55af6af0068ba57e48a35.jpg');">
+  <div class="overlay bg-black bg-opacity-50 w-full h-full flex flex-col justify-center items-center">
+    <img src="assets/logo.png" alt="Saborido Etiquetas"
+         class="logo-center mb-4
+                w-40 sm:w-48 md:w-56 lg:w-72 xl:w-96">
+    <h1 class="text-6xl lg:text-7xl xl:text-8xl">Saborido Etiquetas</h1>
+    <p class="text-2xl lg:text-3xl xl:text-4xl">Una colección de etiquetas de vinos de Jerez</p>
   </div>
 </div>
-<div class="page-container">
-  <div class="info-section">
-    <h2>Vino de Jerez</h2>
-    <p class="justified-text">Los vinos de Jerez son conocidos por su historia rica y su sabor inigualable, una verdadera joya de la enología española. Producidos en la región andaluza de Jerez de la Frontera, estos vinos se destacan por su diversidad de estilos, que van desde el seco y delicado Fino hasta el intenso y robusto Oloroso. Con su característica paleta de aromas que puede incluir notas de nuez, frutas secas, y toques salinos, los vinos de Jerez capturan la esencia de su tierra y clima, regalando una experiencia única en cada sorbo.</p>
 
-    <p class="justified-text">Pero más allá de su exquisitez líquida, los vinos de Jerez también encantan por la belleza de sus etiquetas. Las botellas de vino de Jerez son auténticas obras de arte que cuentan historias a través de sus diseños. Las etiquetas, muchas veces de estilo clásico, suelen incluir intrincadas tipografías y detalladas ilustraciones que evocan la tradición vitivinícola de la región. Algunos presentan escenas de viñedos al atardecer, representaciones de las antiguas bodegas, o imágenes de elegantes damas y caballeros del siglo XIX disfrutando de una copa de Jerez. Estas etiquetas no solo son una carta de presentación del vino, sino también un reflejo de la rica herencia cultural de Jerez.</p>
 
-    <p class="justified-text">A lo largo de los años, las etiquetas de las botellas de vino de Jerez han evolucionado, pero siempre han mantenido ese encanto que las hace únicas. Son un elemento de colección para muchos amantes del vino, que valoran tanto el contenido como la historia y el arte que cada botella encierra. Así, una botella de vino de Jerez no es solo una experiencia para el paladar, sino también un deleite para los ojos, haciendo de cada degustación un momento verdaderamente especial.</p>
+<div class="page-container p-5 mx-auto max-w-7xl mt-16">
+  <div class="info-section p-5 bg-gray-100 rounded-lg shadow mb-5">
+    <h2 class="text-2xl mb-5">Vino de Jerez</h2>
+    <p class="justified-text text-justify indent-8 text-lg leading-relaxed mb-5">Los vinos de Jerez son conocidos por su historia rica y su sabor inigualable, una verdadera joya de la enología española. Producidos en la región andaluza de Jerez de la Frontera, estos vinos se destacan por su diversidad de estilos, que van desde el seco y delicado Fino hasta el intenso y robusto Oloroso. Con su característica paleta de aromas que puede incluir notas de nuez, frutas secas, y toques salinos, los vinos de Jerez capturan la esencia de su tierra y clima, regalando una experiencia única en cada sorbo.</p>
+
+    <p class="justified-text text-justify indent-8 text-lg leading-relaxed mb-5">Pero más allá de su exquisitez líquida, los vinos de Jerez también encantan por la belleza de sus etiquetas. Las botellas de vino de Jerez son auténticas obras de arte que cuentan historias a través de sus diseños. Las etiquetas, muchas veces de estilo clásico, suelen incluir intrincadas tipografías y detalladas ilustraciones que evocan la tradición vitivinícola de la región. Algunos presentan escenas de viñedos al atardecer, representaciones de las antiguas bodegas, o imágenes de elegantes damas y caballeros del siglo XIX disfrutando de una copa de Jerez. Estas etiquetas no solo son una carta de presentación del vino, sino también un reflejo de la rica herencia cultural de Jerez.</p>
+
+    <p class="justified-text text-justify indent-8 text-lg leading-relaxed mb-5">A lo largo de los años, las etiquetas de las botellas de vino de Jerez han evolucionado, pero siempre han mantenido ese encanto que las hace únicas. Son un elemento de colección para muchos amantes del vino, que valoran tanto el contenido como la historia y el arte que cada botella encierra. Así, una botella de vino de Jerez no es solo una experiencia para el paladar, sino también un deleite para los ojos, haciendo de cada degustación un momento verdaderamente especial.</p>
   </div>
-  <div class="total-etiquetas-section">
-    <h4>Actualmente hay un total de {{ totalEtiquetas }} etiquetas en la página.</h4>
+  <div class="total-etiquetas-section text-center my-5 text-xl text-gray-800">
+    <h4 class="inline-block p-2 bg-gray-100 rounded shadow">Actualmente hay un total de {{ totalEtiquetas }} etiquetas en la página.</h4>
   </div>
 
   <app-bodegas></app-bodegas>
   <app-blog></app-blog>
-
 </div>

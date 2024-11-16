@@ -1,15 +1,10 @@
-<!-- src/app/components/header/header.component.html -->
-<header class="site-header">
-  <div class="logo" (click)="navigateHome()">
-    <img src="assets/logo.png" alt="Saborido Etiquetas">
-    <span class="site-title">Saborido Etiquetas</span>
+<header class="site-header bg-gradient-to-r from-yellow-400 to-orange-500 p-4">
+  <div class="logo cursor-pointer flex items-center" (click)="navigateHome()">
+    <img src="assets/logo.png" alt="Saborido Etiquetas" class="h-10 mr-2">
+    <span class="site-title text-white text-2xl font-bold">Saborido Etiquetas</span>
   </div>
-  <nav class="nav-menu">
-    <a routerLink="/" routerLinkActive="active">Inicio</a>
-    <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
-    <!--
-    <a routerLink="/privacidad" routerLinkActive="active">Política de Privacidad</a>
-    <a routerLink="/cookies" routerLinkActive="active">Política de Cookies</a>
-    -->
+  <nav class="nav-menu mt-2">
+    <a routerLink="" routerLinkActive="active-home" [routerLinkActiveOptions]="{ exact: true }" class="home-link text-gray-300 hover:text-gray-200 mx-2">Inicio</a>
+    <a routerLink="/contacto" routerLinkActive="active" class="text-white hover:text-gray-200 mx-2">Contacto</a>
   </nav>
 </header>

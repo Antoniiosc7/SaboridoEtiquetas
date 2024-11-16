@@ -24,8 +24,8 @@ export const routes: Routes = [
   { path: 'contacto', component: ContactoComponent },
   { path: 'privacidad', component: PrivacidadComponent },
   { path: 'bodegas', component: BodegasComponent },
-  //{ path: 'admin/blog', component: AdminBlogComponent, canActivate: [authGuard] },
-  { path: 'login', component: LoginComponent },
+  //{ path: 'admin/blog', component: AdminBlogComponent },
+  //{ path: 'login', component: LoginComponent },
   { path: 'blogs', component: BlogComponent },
   { path: 'blog/:id', component: BlogDetailComponent },
   { path: '**', component: NotFoundComponent }

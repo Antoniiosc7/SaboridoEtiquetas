@@ -49,6 +49,9 @@
     "/bodega/segura-sl",
     "/bodegas",
     "/blogs",
-    "/bodega/wisdom-warter"
+    "/bodega/wisdom-warter",
+    "/blog/consejo-regulador-vino-jerez-etiquetas",
+    "/blog/vino-y-futbol-xerez",
+    "/blog/historia-xerez-sherry-jerez"
   ]
 }
