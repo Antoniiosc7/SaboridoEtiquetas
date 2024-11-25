@@ -93,13 +93,24 @@ export class BodegaComponent implements OnInit {
     this.metaService.updateTag({ name: 'description', content: this.bodega!.descripcion });
     this.metaService.updateTag({ name: 'keywords', content: 'bodega, jerez, ' + this.bodega!.codBodega + ', ' + this.bodega!.nombre });
     this.metaService.updateTag({ name: 'robots', content: 'index, follow' });
-    // Agregar etiquetas meta para las imágenes
+
+    // Eliminar etiquetas <link> existentes para imágenes
+    const existingLinks = document.querySelectorAll('link[rel="image"]');
+    existingLinks.forEach(link => link.remove());
+
+    // Agregar etiquetas <link> para las imágenes
     this.etiquetas.forEach((etiqueta, index) => {
       if (etiqueta.imgUrl1) {
-        this.metaService.updateTag({ name: `image${index * 2}`, content: etiqueta.imgUrl1 });
+        const link1 = document.createElement('link');
+        link1.setAttribute('rel', 'image');
+        link1.setAttribute('href', etiqueta.imgUrl1);
+        document.head.appendChild(link1);
       }
       if (etiqueta.imgUrl2) {
-        this.metaService.updateTag({ name: `image${index * 2 + 1}`, content: etiqueta.imgUrl2 });
+        const link2 = document.createElement('link');
+        link2.setAttribute('rel', 'image');
+        link2.setAttribute('href', etiqueta.imgUrl2);
+        document.head.appendChild(link2);
       }
     });
   }
